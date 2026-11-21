@@ -7,14 +7,14 @@ Requires=bluetooth.service
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/home/astanix/cauldron-m110-escpos-bridge
+WorkingDirectory=/opt/CauldronBridge
 Environment="PYTHONUNBUFFERED=1"
 ExecStartPre=/usr/sbin/rfkill unblock bluetooth
 ExecStartPre=/bin/sleep 4
 ExecStartPre=/usr/bin/bluetoothctl power on
 ExecStartPre=/usr/bin/bluetoothctl system-alias M110
 # CHANGE --ip TO YOUR NETWORK PRINTER'S IP ADDRESS
-ExecStart=/home/astanix/cauldron-m110-escpos-bridge/venv/bin/python /home/astanix/cauldron-m110-escpos-bridge/printer_emulator.py --ip 192.168.50.199
+ExecStart=/opt/CauldronBridge/venv/bin/python /opt/CauldronBridge/printer_emulator.py --ip 192.168.50.199
 Restart=always
 RestartSec=5
 
